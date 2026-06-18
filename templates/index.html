@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block conteudo %}
+  <h1>📚 Biblioteca Escolar</h1>
+  <div class="cards">
+    <div class="card">
+      <h2>{{ total }}</h2>
+      <p>Livros no acervo</p>
+    </div>
+    <div class="card">
+      <h2>{{ emprestados }}</h2>
+      <p>Livros emprestados</p>
+    </div>
+    <div class="card">
+      <h2>{{ total - emprestados }}</h2>
+      <p>Disponíveis</p>
+    </div>
+  </div>
+{% endblock %}

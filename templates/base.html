@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Escolar</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/">🏠 Início</a>
+    <a href="/livros">📖 Livros</a>
+    <a href="/emprestimos">📋 Empréstimos</a>
+    <a href="/emprestar">➕ Emprestar</a>
+  </nav>
+  <div class="container">
+    {% block conteudo %}{% endblock %}
+  </div>
+</body>
+</html>

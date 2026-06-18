@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block conteudo %}
+  <h1>📖 Acervo de Livros</h1>
+  <a href="/cadastrar-livro" class="btn">+ Cadastrar livro</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th><th>Autor</th><th>Ano</th><th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for livro in livros %}
+      <tr>
+        <td>{{ livro[1] }}</td>
+        <td>{{ livro[2] }}</td>
+        <td>{{ livro[3] }}</td>
+        <td>
+          {% if livro[4] == 1 %}
+            <span class="badge verde">Disponível</span>
+          {% else %}
+            <span class="badge vermelho">Emprestado</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+<!--cadastrar livros-->
+
+
+
