@@ -9,7 +9,7 @@ env/
 .env
 
 # Banco de dados local
-*.db
+
 *.sqlite3
 
 # Flask
