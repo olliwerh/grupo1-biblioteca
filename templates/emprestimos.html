@@ -1,3 +1,49 @@
-<form action="/devolver/{{ emprestimos[0] }}" method="POST" style="display:inline">
-  <button type="submit" class="btn vermelho">Devolver</button>
+
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h2>📋 Relatório de Empréstimos Ativos</h2>
+<p>Consulte abaixo os livros que estão atualmente emprestados.</p>
+
+<table class="tabela-emprestimos">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Livro</th>
+            <th>Aluno/Leitor</th>
+            <th>Data de Empréstimo</th>            
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {# Loop para listar os empréstimos vindos do Python #}
+        {% for emprestimo in emprestimos %}
+        <tr>
+            <td>{{ emprestimo[0] }}</td>
+            <td><strong>{{ emprestimo[1] }}</strong></td>
+            <td>{{ emprestimo[2] }}</td>
+            <td>{{ emprestimo[3] }}</td>            
+            <td>
+                {# Tag colorida dependendo do status do empréstimo #}
+                {% if emprestimo.status == 'atrasado' %}
+                    <span class="status atrasado">⚠️ Atrasado</span>
+                {% else %}
+                    <span class="status no-prazo">✅ No Prazo</span>
+                {% endif %}
+            </td>
+            <td>
+                {# Botão de exemplo para devolver o livro #}
+                <form action="/devolver/{{ emprestimos[0][0] }}" method="POST" style="display:inline">
+  <button type="submit" class="btn vermelho">Devolver</button>  
 </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7" class="nenhum-registro">Nenhum empréstimo registrado no momento.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
